@@ -6,8 +6,12 @@ require('dotenv').config();
 const usersRouter = express.Router();
 
 usersRouter.get('/', async (req, res) => {
-    const users = await UsersModel.find();
-    res.send(users);
+    try {
+        const users = await UsersModel.find();
+        res.send(users);
+    } catch (e) {
+        res.status(500).send({ Error: "server error" })
+    }
 })
 
 usersRouter.post('/signup', async (req, res) => {
