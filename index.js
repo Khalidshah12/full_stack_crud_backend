@@ -16,7 +16,7 @@ app.use(cors({
 }))
 
 app.use('/users', usersRouter);
-// app.use(authentication)
+app.use(authentication)
 app.use('/todos', authentication, todosRouter);
 
 app.listen(8080, async () => {
